@@ -625,143 +625,6 @@
   .info-cell-value.ok { color: var(--accent3); }
 
 
-  /* ═══ PRE-CAPTURE CHECKLIST ═══ */
-  .precapture-card {
-    background: var(--surface);
-    border: 2px solid var(--accent-main);
-    border-radius: 6px;
-    padding: 20px;
-  }
-
-  .precapture-blade-tabs {
-    display: flex;
-    gap: 8px;
-    margin-bottom: 20px;
-  }
-
-  .blade-tab {
-    flex: 1;
-    padding: 10px;
-    border-radius: 6px;
-    border: 2px solid var(--border);
-    background: var(--surface2);
-    color: var(--text-dim);
-    font-family: 'Urbanist', sans-serif;
-    font-size: 15px;
-    font-weight: 700;
-    cursor: pointer;
-    text-align: center;
-    transition: all 0.15s;
-  }
-
-  .blade-tab.active {
-    border-color: var(--accent-main);
-    background: rgba(91,72,251,0.15);
-    color: var(--text-bright);
-  }
-
-  .blade-tab.complete {
-    border-color: var(--accent3);
-    background: rgba(63,192,194,0.1);
-    color: var(--accent3);
-  }
-
-  .precapture-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 14px;
-    padding: 14px;
-    border-radius: 6px;
-    background: var(--surface2);
-    border: 2px solid var(--border);
-    cursor: pointer;
-    transition: all 0.15s;
-    margin-bottom: 10px;
-    user-select: none;
-  }
-
-  .precapture-item:last-child { margin-bottom: 0; }
-
-  .precapture-item:hover { border-color: var(--border-bright); }
-
-  .precapture-item.checked {
-    border-color: var(--accent3);
-    background: rgba(63,192,194,0.08);
-  }
-
-  .precapture-check {
-    width: 26px;
-    height: 26px;
-    border-radius: 4px;
-    border: 2px solid var(--border-bright);
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 14px;
-    color: transparent;
-    transition: all 0.15s;
-    margin-top: 1px;
-  }
-
-  .precapture-item.checked .precapture-check {
-    background: var(--accent3);
-    border-color: var(--accent3);
-    color: #181A1C;
-  }
-
-  .precapture-text {
-    flex: 1;
-  }
-
-  .precapture-title {
-    font-family: 'Urbanist', sans-serif;
-    font-size: 15px;
-    font-weight: 700;
-    color: var(--text-bright);
-    margin-bottom: 3px;
-  }
-
-  .precapture-item.checked .precapture-title { color: var(--accent3); }
-
-  .precapture-detail {
-    font-family: 'Roboto', sans-serif;
-    font-size: 13px;
-    color: var(--text-dim);
-    line-height: 1.5;
-  }
-
-  .precapture-item.checked .precapture-detail { color: var(--text); }
-
-  .precapture-warning {
-    background: rgba(240,180,41,0.1);
-    border: 2px solid rgba(240,180,41,0.3);
-    border-radius: 6px;
-    padding: 12px 16px;
-    font-family: 'Roboto', sans-serif;
-    font-size: 13px;
-    color: var(--warn);
-    line-height: 1.6;
-    margin-bottom: 10px;
-  }
-
-  .blade-clear-btn {
-    width: 100%;
-    margin-top: 14px;
-    padding: 10px;
-    border-radius: 6px;
-    border: 2px solid var(--border);
-    background: transparent;
-    color: var(--text-dim);
-    font-family: 'Urbanist', sans-serif;
-    font-size: 13px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.15s;
-  }
-
-  .blade-clear-btn:hover { border-color: var(--border-bright); color: var(--text); }
-
   /* ═══ QUICK REFERENCE ═══ */
   .ref-card {
     background: var(--surface);
@@ -845,9 +708,300 @@
     color: var(--text);
   }
 
+
+  /* ═══ FIRST RUN MODAL ═══ */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(10,9,20,0.92);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .modal-overlay.hidden { display: none; }
+
+  .modal-box {
+    background: #2C3543;
+    border: 2px solid #5B48FB;
+    border-radius: 12px;
+    max-width: 560px;
+    width: 100%;
+    padding: 36px;
+    position: relative;
+  }
+
+  .modal-step { display: none; }
+  .modal-step.active { display: block; }
+
+  .modal-step-num {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 3px;
+    color: #9C91FC;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .modal-step-title {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 28px;
+    font-weight: 900;
+    color: #FFFFFF;
+    margin-bottom: 14px;
+    line-height: 1.2;
+  }
+
+  .modal-step-title span { color: #9C91FC; }
+
+  .modal-step-body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+    color: #E1E8EF;
+    line-height: 1.8;
+    margin-bottom: 24px;
+  }
+
+  .modal-step-body strong { color: #FFFFFF; }
+  .modal-step-body .do { color: #3FC0C2; font-weight: 700; }
+  .modal-step-body .dont { color: #e8365d; font-weight: 700; }
+
+  .modal-action-box {
+    background: rgba(91,72,251,0.12);
+    border: 1px solid rgba(91,72,251,0.3);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-bottom: 24px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    color: #E1E8EF;
+    line-height: 1.8;
+  }
+
+  .modal-action-box .step-line {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    margin-bottom: 6px;
+  }
+
+  .modal-action-box .step-line:last-child { margin-bottom: 0; }
+
+  .modal-action-box .step-n {
+    font-family: 'Urbanist', sans-serif;
+    font-weight: 900;
+    font-size: 15px;
+    color: #9C91FC;
+    flex-shrink: 0;
+    width: 24px;
+  }
+
+  .modal-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .modal-dots {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .modal-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #455C88;
+    transition: all 0.2s;
+  }
+
+  .modal-dot.active {
+    background: #5B48FB;
+    width: 24px;
+    border-radius: 4px;
+  }
+
+  .modal-dot.done { background: #3FC0C2; }
+
+  .btn-modal-next {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    padding: 12px 28px;
+    border-radius: 6px;
+    border: none;
+    background: #5B48FB;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+
+  .btn-modal-next:hover { background: #7363FB; }
+
+  .btn-modal-skip {
+    font-family: 'Roboto', sans-serif;
+    font-size: 13px;
+    color: #545B65;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    transition: color 0.15s;
+  }
+
+  .btn-modal-skip:hover { color: #BEC5D2; }
+
+  .modal-warning-box {
+    background: rgba(232,54,93,0.1);
+    border: 2px solid rgba(232,54,93,0.35);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-bottom: 24px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    color: #E1E8EF;
+    line-height: 1.7;
+  }
+
 </style>
 </head>
 <body>
+
+
+<!-- FIRST RUN WALKTHROUGH MODAL -->
+<div class="modal-overlay" id="firstRunModal">
+  <div class="modal-box">
+
+    <!-- Step 1: Welcome -->
+    <div class="modal-step active" id="mStep0">
+      <div class="modal-step-num">Welcome · Step 1 of 5</div>
+      <div class="modal-step-title">First time using<br><span>IBI Folder Creation?</span></div>
+      <div class="modal-step-body">
+        This tool takes <strong>30 seconds</strong> to set up your folder structure correctly before you start working with your captured data.<br><br>
+        This walkthrough will show you exactly what to do. You only see this once.
+      </div>
+      <div class="modal-nav">
+        <button class="btn-modal-skip" onclick="skipWalkthrough()">Skip — I know what I'm doing</button>
+        <div class="modal-dots">
+          <div class="modal-dot active" id="dot0"></div>
+          <div class="modal-dot" id="dot1"></div>
+          <div class="modal-dot" id="dot2"></div>
+          <div class="modal-dot" id="dot3"></div>
+          <div class="modal-dot" id="dot4"></div>
+        </div>
+        <button class="btn-modal-next" onclick="nextStep()">Let's go →</button>
+      </div>
+    </div>
+
+    <!-- Step 2: Enter site + turbine -->
+    <div class="modal-step" id="mStep1">
+      <div class="modal-step-num">Step 2 of 5</div>
+      <div class="modal-step-title">Enter your <span>Site &amp; Turbine</span></div>
+      <div class="modal-step-body">
+        On the left panel, enter the <strong>Site Name</strong> and <strong>Turbine ID</strong> for the turbine you just captured. Then hit <strong>Save Config</strong>.
+      </div>
+      <div class="modal-action-box">
+        <div class="step-line"><span class="step-n">1.</span><span>Type the Site Name — use underscores, no spaces. Example: <strong>Moerdijk</strong></span></div>
+        <div class="step-line"><span class="step-n">2.</span><span>Type the Turbine ID. Example: <strong>T01</strong></span></div>
+        <div class="step-line"><span class="step-n">3.</span><span>Click <strong>Save Config</strong> — it remembers this so you don't retype it each time</span></div>
+      </div>
+      <div class="modal-nav">
+        <button class="btn-modal-skip" onclick="prevStep()">← Back</button>
+        <div class="modal-dots">
+          <div class="modal-dot done" id="dot0b"></div>
+          <div class="modal-dot active" id="dot1b"></div>
+          <div class="modal-dot" id="dot2b"></div>
+          <div class="modal-dot" id="dot3b"></div>
+          <div class="modal-dot" id="dot4b"></div>
+        </div>
+        <button class="btn-modal-next" onclick="nextStep()">Next →</button>
+      </div>
+    </div>
+
+    <!-- Step 3: Create folder structure -->
+    <div class="modal-step" id="mStep2">
+      <div class="modal-step-num">Step 3 of 5</div>
+      <div class="modal-step-title">Create your <span>folder structure</span></div>
+      <div class="modal-step-body">
+        Click <strong>Select IBI_Workspace Folder &amp; Create Structure</strong>. This builds all 15 folders automatically — you don't need to create them manually.
+      </div>
+      <div class="modal-action-box">
+        <div class="step-line"><span class="step-n">1.</span><span>Open <strong>Finder</strong> and create a new folder somewhere — Desktop or Mac SSD. Call it <strong>IBI_Workspace</strong></span></div>
+        <div class="step-line"><span class="step-n">2.</span><span>Click the button and <strong>navigate into that IBI_Workspace folder</strong> in the picker</span></div>
+        <div class="step-line"><span class="step-n">3.</span><span>All folders are created instantly</span></div>
+      </div>
+      <div class="modal-warning-box">
+        🚫 <strong>Do not select Desktop or Downloads directly</strong> — you must navigate <em>into</em> a folder you created first. Selecting the Desktop root itself will give an error.
+      </div>
+      <div class="modal-nav">
+        <button class="btn-modal-skip" onclick="prevStep()">← Back</button>
+        <div class="modal-dots">
+          <div class="modal-dot done"></div>
+          <div class="modal-dot done"></div>
+          <div class="modal-dot active"></div>
+          <div class="modal-dot"></div>
+          <div class="modal-dot"></div>
+        </div>
+        <button class="btn-modal-next" onclick="nextStep()">Next →</button>
+      </div>
+    </div>
+
+    <!-- Step 4: RAW folder -->
+    <div class="modal-step" id="mStep3">
+      <div class="modal-step-num">Step 4 of 5</div>
+      <div class="modal-step-title">Create the <span>RAW backup folder</span></div>
+      <div class="modal-step-body">
+        Click <strong>Create RAW Backup Folder</strong>. Select the same <strong>IBI_Workspace</strong> folder again. This creates a temporary folder where you sort and render your raw data before moving it to the final deliverables folder.
+      </div>
+      <div class="modal-action-box">
+        <div class="step-line"><span class="step-n">1.</span><span>Click <strong>Create RAW Backup Folder</strong></span></div>
+        <div class="step-line"><span class="step-n">2.</span><span>Select the same <strong>IBI_Workspace</strong> folder as before</span></div>
+        <div class="step-line"><span class="step-n">3.</span><span>This creates: <strong>SiteName_TurbineID_RAW</strong> with Blade 1, 2, 3 inside</span></div>
+      </div>
+      <div class="modal-nav">
+        <button class="btn-modal-skip" onclick="prevStep()">← Back</button>
+        <div class="modal-dots">
+          <div class="modal-dot done"></div>
+          <div class="modal-dot done"></div>
+          <div class="modal-dot done"></div>
+          <div class="modal-dot active"></div>
+          <div class="modal-dot"></div>
+        </div>
+        <button class="btn-modal-next" onclick="nextStep()">Next →</button>
+      </div>
+    </div>
+
+    <!-- Step 5: Filename generator -->
+    <div class="modal-step" id="mStep4">
+      <div class="modal-step-num">Step 5 of 5</div>
+      <div class="modal-step-title">Use the <span>Filename Generator</span></div>
+      <div class="modal-step-body">
+        When you need to rename your Gimbal and 360 video files, use the Filename Generator on the right. Select the blade and chamber — it generates the exact correct filename and you can copy it with one click.
+      </div>
+      <div class="modal-action-box">
+        <div class="step-line"><span class="step-n">1.</span><span>Select the <strong>Blade number</strong> and <strong>Chamber</strong> (LC, CC, or TE)</span></div>
+        <div class="step-line"><span class="step-n">2.</span><span>Copy the generated filename and use it to rename your file</span></div>
+        <div class="step-line"><span class="step-n">3.</span><span>Always capture in order: <strong>LC → CC → TE</strong></span></div>
+      </div>
+      <div class="modal-nav">
+        <button class="btn-modal-skip" onclick="prevStep()">← Back</button>
+        <div class="modal-dots">
+          <div class="modal-dot done"></div>
+          <div class="modal-dot done"></div>
+          <div class="modal-dot done"></div>
+          <div class="modal-dot done"></div>
+          <div class="modal-dot active"></div>
+        </div>
+        <button class="btn-modal-next" onclick="closeWalkthrough()" style="background:#3FC0C2;">✓ Got it — Let's go</button>
+      </div>
+    </div>
+
+  </div>
+</div>
 
 <!-- BACK NAV -->
 <div style="background:#2C3543; border-bottom:2px solid #455C88; padding:12px 28px; display:flex; align-items:center; justify-content:space-between; position:sticky; top:0; z-index:999;">
@@ -1062,77 +1216,6 @@
       </div>
     </div>
 
-    <!-- PRE-CAPTURE CHECKLIST -->
-    <div>
-      <div class="section-header">
-        <div class="section-num">B</div>
-        <div class="section-title">Pre-Capture Checklist</div>
-      </div>
-      <div class="precapture-card">
-        <p style="font-family:'Roboto',sans-serif; font-size:14px; color:var(--text); margin-bottom:16px; line-height:1.6;">
-          Complete this checklist <strong style="color:var(--text-bright);">before capturing each blade.</strong> Select the blade you are about to capture.
-        </p>
-
-        <!-- Blade selector tabs -->
-        <div class="precapture-blade-tabs">
-          <div class="blade-tab active" id="tab1" onclick="selectBlade(1)">Blade 1</div>
-          <div class="blade-tab" id="tab2" onclick="selectBlade(2)">Blade 2</div>
-          <div class="blade-tab" id="tab3" onclick="selectBlade(3)">Blade 3</div>
-        </div>
-
-        <!-- Checklist items -->
-        <div id="checklistItems">
-
-          <div class="precapture-warning">
-            ⚠ Gimbal SD card — <strong>_VID and _IMG folders must be empty</strong> before starting. Files left over will contaminate this blade's data.
-          </div>
-
-          <div class="precapture-item" id="pc0" onclick="togglePC(0)">
-            <div class="precapture-check" id="pcc0">✓</div>
-            <div class="precapture-text">
-              <div class="precapture-title">Gimbal SD card _VID and _IMG folders are empty</div>
-              <div class="precapture-detail">Open the Gimbal SD card and confirm both folders have no files inside before capture begins.</div>
-            </div>
-          </div>
-
-          <div class="precapture-item" id="pc1" onclick="togglePC(1)">
-            <div class="precapture-check" id="pcc1">✓</div>
-            <div class="precapture-text">
-              <div class="precapture-title">Insta360: Lens Guards → OFF</div>
-              <div class="precapture-detail">In Accessories Assembly, set Lens Guards to OFF. Must be done for every new clip imported.</div>
-            </div>
-          </div>
-
-          <div class="precapture-item" id="pc2" onclick="togglePC(2)">
-            <div class="precapture-check" id="pcc2">✓</div>
-            <div class="precapture-text">
-              <div class="precapture-title">Insta360: Stitching Optimization → OFF</div>
-              <div class="precapture-detail">In Accessories Assembly, set Stitching Optimization to OFF. Failure causes QI and requires a rerender.</div>
-            </div>
-          </div>
-
-          <div class="precapture-item" id="pc3" onclick="togglePC(3)">
-            <div class="precapture-check" id="pcc3">✓</div>
-            <div class="precapture-text">
-              <div class="precapture-title">Rendering target is Mac SSD — not external drive</div>
-              <div class="precapture-detail">Export path must point to the Videos folder on the Mac SSD. Rendering to external drive doubles render time.</div>
-            </div>
-          </div>
-
-          <div class="precapture-item" id="pc4" onclick="togglePC(4)">
-            <div class="precapture-check" id="pcc4">✓</div>
-            <div class="precapture-text">
-              <div class="precapture-title">360 files moved together — LC then CC then TE</div>
-              <div class="precapture-detail">Always move VID files as a pair. Capture order: LC → CC → TE. Never rename or separate 360 file pairs.</div>
-            </div>
-          </div>
-
-        </div>
-
-        <button class="blade-clear-btn" onclick="clearPC()">↺ Reset checklist for next blade</button>
-      </div>
-    </div>
-
     <!-- QUICK REFERENCE -->
     <div>
       <div class="section-header">
@@ -1282,11 +1365,8 @@
 <div class="toast-container" id="toastContainer"></div>
 
 <script>
-  // ═══ INIT ═══
-  window.addEventListener('DOMContentLoaded', () => {
-    loadConfig();
-    updateDisplays();
-  });
+  // ═══ INIT ═══ (called from modal JS DOMContentLoaded above)
+  // loadConfig and updateDisplays called in initWalkthrough block
 
   // ═══ CONFIG MANAGEMENT ═══
   function loadConfig() {
@@ -1643,6 +1723,64 @@
     }
     document.getElementById(`tab${currentBlade}`).classList.remove('complete');
   }
+
+
+  // ═══ FIRST RUN WALKTHROUGH ═══
+  let currentModalStep = 0;
+  const TOTAL_STEPS = 5;
+
+  function initWalkthrough() {
+    const seen = localStorage.getItem('ibi_walkthrough_done');
+    if (!seen) {
+      document.getElementById('firstRunModal').classList.remove('hidden');
+    }
+  }
+
+  function nextStep() {
+    if (currentModalStep < TOTAL_STEPS - 1) {
+      document.getElementById(`mStep${currentModalStep}`).classList.remove('active');
+      currentModalStep++;
+      document.getElementById(`mStep${currentModalStep}`).classList.add('active');
+    }
+  }
+
+  function prevStep() {
+    if (currentModalStep > 0) {
+      document.getElementById(`mStep${currentModalStep}`).classList.remove('active');
+      currentModalStep--;
+      document.getElementById(`mStep${currentModalStep}`).classList.add('active');
+    }
+  }
+
+  function skipWalkthrough() {
+    closeWalkthrough();
+  }
+
+  function closeWalkthrough() {
+    document.getElementById('firstRunModal').classList.add('hidden');
+    localStorage.setItem('ibi_walkthrough_done', '1');
+  }
+
+  // Add a "?" help button to reopen the walkthrough
+  window.addEventListener('DOMContentLoaded', () => {
+    loadConfig();
+    updateDisplays();
+    initWalkthrough();
+    // inject help button into header status area
+    const helpBtn = document.createElement('button');
+    helpBtn.innerHTML = '? How to use this tool';
+    helpBtn.style.cssText = 'font-family:Urbanist,sans-serif;font-size:13px;font-weight:700;padding:7px 14px;border-radius:6px;border:2px solid #455C88;background:transparent;color:#BEC5D2;cursor:pointer;margin-right:8px;transition:all 0.15s;';
+    helpBtn.onmouseover = () => { helpBtn.style.borderColor='#9C91FC'; helpBtn.style.color='#fff'; };
+    helpBtn.onmouseout = () => { helpBtn.style.borderColor='#455C88'; helpBtn.style.color='#BEC5D2'; };
+    helpBtn.onclick = () => {
+      currentModalStep = 0;
+      document.querySelectorAll('.modal-step').forEach(s => s.classList.remove('active'));
+      document.getElementById('mStep0').classList.add('active');
+      document.getElementById('firstRunModal').classList.remove('hidden');
+    };
+    const statusArea = document.querySelector('.header-status');
+    if (statusArea) statusArea.parentNode.insertBefore(helpBtn, statusArea);
+  });
 
   function delay(ms) {
     return new Promise(res => setTimeout(res, ms));
