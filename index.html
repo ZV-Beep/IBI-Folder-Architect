@@ -8,16 +8,22 @@
   @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Barlow+Condensed:wght@400;700;900&family=Barlow:wght@300;400&display=swap');
 
   :root {
-    --bg: #0a0c0e;
-    --surface: #111418;
-    --border: #2a3540;
-    --accent: #00d4ff;
-    --accent3: #00ff88;
-    --danger: #ff2d55;
-    --warn: #ffd600;
-    --text: #c8d8e8;
-    --text-dim: #5a7080;
-    --text-bright: #eef4f8;
+    --bg: #0e0d14;
+    --surface: #181A1C;
+    --surface2: #1e2028;
+    --surface3: #252830;
+    --border: #2C3543;
+    --border-bright: #455C88;
+    --accent: #7363FB;
+    --accent-main: #5B48FB;
+    --accent2: #3FC0C2;
+    --accent3: #3FC0C2;
+    --blue: #1889F1;
+    --warn: #f0b429;
+    --danger: #e8365d;
+    --text: #BEC5D2;
+    --text-dim: #545B65;
+    --text-bright: #E1E8EF;
     --mono: 'Share Tech Mono', monospace;
     --head: 'Barlow Condensed', sans-serif;
     --body: 'Barlow', sans-serif;
@@ -42,8 +48,8 @@
     position: fixed;
     inset: 0;
     background-image:
-      linear-gradient(rgba(0,212,255,0.012) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(0,212,255,0.012) 1px, transparent 1px);
+      linear-gradient(rgba(115,99,251,0.012) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(115,99,251,0.012) 1px, transparent 1px);
     background-size: 40px 40px;
     pointer-events: none;
   }
@@ -122,8 +128,8 @@
 
   .tool-card:hover::before { width: 4px; }
 
-  .tool-card.folder { --card-accent: var(--accent); }
-  .tool-card.auditor { --card-accent: var(--danger); }
+  .tool-card.folder { --card-accent: var(--accent-main); }
+  .tool-card.auditor { --card-accent: var(--accent2); }
 
   .tool-num {
     font-family: var(--mono);
@@ -187,6 +193,45 @@
     transform: translateY(-50%) translateX(3px);
   }
 
+  .tool-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 16px;
+  }
+
+  .btn-open, .btn-download {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    border-radius: 2px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: all 0.15s;
+    font-weight: 700;
+  }
+
+  .btn-open {
+    background: var(--accent-main);
+    color: #fff;
+  }
+
+  .btn-open:hover { background: #9C91FC; }
+
+  .btn-download {
+    background: transparent;
+    color: var(--text-dim);
+    border: 1px solid var(--border);
+  }
+
+  .btn-download:hover {
+    border-color: var(--accent-main);
+    color: var(--accent-main);
+  }
+
   .footer {
     margin-top: 48px;
     font-family: var(--mono);
@@ -207,8 +252,8 @@
     font-family: var(--mono);
     font-size: 10px;
     color: var(--danger);
-    background: rgba(255,45,85,0.06);
-    border: 1px solid rgba(255,45,85,0.2);
+    background: rgba(232,54,93,0.06);
+    border: 1px solid rgba(232,54,93,0.2);
     border-radius: 3px;
     padding: 10px 16px;
     text-align: center;
@@ -221,8 +266,8 @@
     font-family: var(--mono);
     font-size: 10px;
     color: var(--warn);
-    background: rgba(255,214,0,0.05);
-    border: 1px solid rgba(255,214,0,0.15);
+    background: rgba(240,180,41,0.05);
+    border: 1px solid rgba(240,180,41,0.15);
     border-radius: 3px;
     padding: 10px 16px;
     text-align: center;
@@ -238,11 +283,9 @@
   <h1>IBI <span>TOOLS</span></h1>
   <div class="subtitle">Wind Turbine Inspection — Data Management Suite</div>
 
-  <div class="sop-note">⚠ SOP: All processes must be completed on the Mac SSD</div>
-
   <div class="tools">
 
-    <a href="site_architect.html" class="tool-card folder">
+    <div class="tool-card folder">
       <div class="tool-num">Tool 01</div>
       <div class="tool-name">IBI — <span>Folder Creation</span></div>
       <div class="tool-desc">Creates the complete end-deliverables and RAW backup folder structure on the Mac SSD. Run this in the nacelle before capturing each turbine.</div>
@@ -252,10 +295,13 @@
         <span class="tag-pill">Filename Generator</span>
         <span class="tag-pill">Pre-Capture</span>
       </div>
-      <span class="tool-arrow">→</span>
-    </a>
+      <div class="tool-actions">
+        <a href="site_architect.html" class="btn-open">Open →</a>
+        <a href="site_architect.html" download="IBI_Folder_Creation.html" class="btn-download">⬇ Download</a>
+      </div>
+    </div>
 
-    <a href="data_auditor.html" class="tool-card auditor">
+    <div class="tool-card auditor">
       <div class="tool-num">Tool 02</div>
       <div class="tool-name">Data <span>Auditor</span></div>
       <div class="tool-desc">End-of-day QC validation engine. Scans your Turbine folder, checks all filenames, video counts, and folder completeness. Issues a Final Pass when everything is clean.</div>
@@ -265,7 +311,33 @@
         <span class="tag-pill">Naming Check</span>
         <span class="tag-pill">Final Pass</span>
       </div>
-      <span class="tool-arrow">→</span>
+      <div class="tool-actions">
+        <a href="data_auditor.html" class="btn-open">Open →</a>
+        <a href="data_auditor.html" download="IBI_Data_Auditor.html" class="btn-download">⬇ Download</a>
+      </div>
+    </div>
+
+  </div>
+      <div class="tool-actions" onclick="event.preventDefault()">
+        <a href="site_architect.html" class="btn-open">Open →</a>
+        <a href="site_architect.html" download="IBI_Folder_Creation.html" class="btn-download">⬇ Download</a>
+      </div>
+    </a>
+
+    <div class="tool-card auditor">
+      <div class="tool-num">Tool 02</div>
+      <div class="tool-name">Data <span>Auditor</span></div>
+      <div class="tool-desc">End-of-day QC validation engine. Scans your Turbine folder, checks all filenames, video counts, and folder completeness. Issues a Final Pass when everything is clean.</div>
+      <div class="tool-tags">
+        <span class="tag-pill">End of Day</span>
+        <span class="tag-pill">QC Validation</span>
+        <span class="tag-pill">Naming Check</span>
+        <span class="tag-pill">Final Pass</span>
+      </div>
+      <div class="tool-actions" onclick="event.preventDefault()">
+        <a href="data_auditor.html" class="btn-open">Open →</a>
+        <a href="data_auditor.html" download="IBI_Data_Auditor.html" class="btn-download">⬇ Download</a>
+      </div>
     </a>
 
   </div>

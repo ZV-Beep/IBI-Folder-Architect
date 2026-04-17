@@ -8,20 +8,22 @@
   @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Barlow+Condensed:wght@300;400;600;700;900&family=Barlow:wght@300;400;500&display=swap');
 
   :root {
-    --bg: #0a0c0e;
-    --surface: #111418;
-    --surface2: #181d22;
-    --surface3: #1e252c;
-    --border: #2a3540;
-    --border-bright: #3a4f60;
-    --accent: #00d4ff;
-    --accent2: #ff6b00;
-    --accent3: #00ff88;
-    --warn: #ffd600;
-    --danger: #ff2d55;
-    --text: #c8d8e8;
-    --text-dim: #5a7080;
-    --text-bright: #eef4f8;
+    --bg: #0e0d14;
+    --surface: #181A1C;
+    --surface2: #1e2028;
+    --surface3: #252830;
+    --border: #2C3543;
+    --border-bright: #455C88;
+    --accent: #7363FB;
+    --accent-main: #5B48FB;
+    --accent2: #3FC0C2;
+    --accent3: #3FC0C2;
+    --blue: #1889F1;
+    --warn: #f0b429;
+    --danger: #e8365d;
+    --text: #BEC5D2;
+    --text-dim: #545B65;
+    --text-bright: #E1E8EF;
     --mono: 'Share Tech Mono', monospace;
     --head: 'Barlow Condensed', sans-serif;
     --body: 'Barlow', sans-serif;
@@ -44,8 +46,8 @@
     position: fixed;
     inset: 0;
     background-image:
-      linear-gradient(rgba(0,212,255,0.015) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(0,212,255,0.015) 1px, transparent 1px);
+      linear-gradient(rgba(115,99,251,0.015) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(115,99,251,0.015) 1px, transparent 1px);
     background-size: 40px 40px;
     pointer-events: none;
     z-index: 0;
@@ -56,7 +58,7 @@
     position: sticky;
     top: 0;
     z-index: 1000;
-    background: var(--danger);
+    background: var(--accent-main);
     color: #fff;
     text-align: center;
     padding: 10px 20px;
@@ -69,7 +71,7 @@
     align-items: center;
     justify-content: center;
     gap: 16px;
-    border-bottom: 3px solid #ff6688;
+    border-bottom: 3px solid rgba(156,145,252,0.5);
     animation: bannerPulse 3s ease-in-out infinite;
     overflow: hidden;
     max-height: 60px;
@@ -86,8 +88,8 @@
   }
 
   @keyframes bannerPulse {
-    0%, 100% { background: var(--danger); }
-    50% { background: #cc0033; }
+    0%, 100% { background: var(--accent-main); }
+    50% { background: #c42050; }
   }
 
   .sop-banner .icon { font-size: 18px; }
@@ -221,8 +223,8 @@
     font-family: var(--mono);
     font-size: 10px;
     color: var(--accent);
-    background: rgba(0,212,255,0.08);
-    border: 1px solid rgba(0,212,255,0.25);
+    background: rgba(115,99,251,0.08);
+    border: 1px solid rgba(115,99,251,0.25);
     width: 26px;
     height: 26px;
     display: flex;
@@ -250,7 +252,7 @@
   }
 
   .card.accent-border {
-    border-color: rgba(0,212,255,0.3);
+    border-color: rgba(115,99,251,0.3);
   }
 
   /* ═══ FORM ELEMENTS ═══ */
@@ -287,7 +289,7 @@
 
   .field input:focus, .field select:focus {
     border-color: var(--accent);
-    box-shadow: 0 0 0 2px rgba(0,212,255,0.1);
+    box-shadow: 0 0 0 2px rgba(115,99,251,0.1);
   }
 
   .field input::placeholder { color: var(--text-dim); }
@@ -319,14 +321,14 @@
   }
 
   .btn-primary {
-    background: var(--accent);
-    color: #000;
+    background: var(--accent-main);
+    color: #fff;
   }
 
   .btn-primary:hover {
-    background: #33ddff;
+    background: #9C91FC;
     transform: translateY(-1px);
-    box-shadow: 0 4px 20px rgba(0,212,255,0.3);
+    box-shadow: 0 4px 20px rgba(115,99,251,0.3);
   }
 
   .btn-primary:active { transform: translateY(0); }
@@ -334,22 +336,22 @@
   .btn-secondary {
     background: transparent;
     color: var(--accent);
-    border: 1px solid rgba(0,212,255,0.4);
+    border: 1px solid rgba(115,99,251,0.4);
   }
 
   .btn-secondary:hover {
-    background: rgba(0,212,255,0.08);
+    background: rgba(115,99,251,0.08);
     border-color: var(--accent);
   }
 
   .btn-danger {
-    background: var(--danger);
+    background: var(--accent-main);
     color: #fff;
   }
 
   .btn-danger:hover {
-    background: #ff4466;
-    box-shadow: 0 4px 20px rgba(255,45,85,0.3);
+    background: #f04070;
+    box-shadow: 0 4px 20px rgba(232,54,93,0.3);
   }
 
   .btn-full { width: 100%; }
@@ -396,7 +398,7 @@
 
   .progress-fill {
     height: 100%;
-    background: linear-gradient(90deg, var(--accent), var(--accent3));
+    background: linear-gradient(90deg, var(--accent-main), var(--accent2));
     border-radius: 2px;
     transition: width 0.4s ease;
     width: 0%;
@@ -641,9 +643,19 @@
     <h1 class="app-title">IBI — <span>FOLDER CREATION</span></h1>
     <div class="app-subtitle">Internal Blade Inspection — Folder Creation Tool v1.0</div>
   </div>
-  <div class="header-status">
-    <div class="status-dot" id="systemDot"></div>
-    <span id="systemStatus">READY</span>
+  <div style="display:flex; align-items:center; gap:12px;">
+    <a href="site_architect.html" download="IBI_Folder_Creation.html"
+       style="font-family:var(--mono); font-size:11px; letter-spacing:1px; text-transform:uppercase;
+              padding:8px 14px; border-radius:2px; text-decoration:none; color:var(--text-dim);
+              border:1px solid var(--border); transition:all 0.15s;"
+       onmouseover="this.style.borderColor='var(--accent)';this.style.color='var(--accent)'"
+       onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--text-dim)'">
+      ⬇ Download
+    </a>
+    <div class="header-status">
+      <div class="status-dot" id="systemDot"></div>
+      <span id="systemStatus">READY</span>
+    </div>
   </div>
 </div>
 
@@ -717,21 +729,21 @@
         <!-- WHERE TO SELECT guidance -->
         <div style="margin-bottom:16px;">
           <div style="font-family:var(--mono); font-size:10px; letter-spacing:2px; color:var(--accent3); text-transform:uppercase; margin-bottom:10px;">✓ WORKS — Select these locations</div>
-          <div style="font-family:var(--mono); font-size:11px; color:var(--text); background:rgba(0,255,136,0.05); border:1px solid rgba(0,255,136,0.18); border-radius:2px; padding:10px 12px; line-height:2; margin-bottom:10px;">
+          <div style="font-family:var(--mono); font-size:11px; color:var(--text); background:rgba(63,192,194,0.05); border:1px solid rgba(63,192,194,0.18); border-radius:2px; padding:10px 12px; line-height:2; margin-bottom:10px;">
             📂 Mac SSD root (e.g. <span style="color:var(--accent3)">Macintosh HD</span>)<br>
             📂 Any folder you have manually created first<br>
             📂 A subfolder inside Documents or Movies<br>
             📂 An external SSD you have already opened in Finder
           </div>
           <div style="font-family:var(--mono); font-size:10px; letter-spacing:2px; color:var(--danger); text-transform:uppercase; margin-bottom:10px;">✗ WILL ERROR — Do not select these</div>
-          <div style="font-family:var(--mono); font-size:11px; color:var(--text); background:rgba(255,45,85,0.05); border:1px solid rgba(255,45,85,0.18); border-radius:2px; padding:10px 12px; line-height:2; margin-bottom:4px;">
+          <div style="font-family:var(--mono); font-size:11px; color:var(--text); background:rgba(232,54,93,0.05); border:1px solid rgba(232,54,93,0.18); border-radius:2px; padding:10px 12px; line-height:2; margin-bottom:4px;">
             🚫 Desktop (macOS blocks browser write access)<br>
             🚫 Downloads folder (browser-protected location)<br>
             🚫 iCloud Drive / Network volumes<br>
             🚫 Any folder shown greyed-out in the picker<br>
             🚫 System folders (Applications, Library, etc.)
           </div>
-          <div style="font-family:var(--mono); font-size:10px; color:var(--warn); margin-top:8px; line-height:1.7; padding:8px 10px; background:rgba(255,214,0,0.05); border:1px solid rgba(255,214,0,0.15); border-radius:2px;">
+          <div style="font-family:var(--mono); font-size:10px; color:var(--warn); margin-top:8px; line-height:1.7; padding:8px 10px; background:rgba(240,180,41,0.05); border:1px solid rgba(240,180,41,0.15); border-radius:2px;">
             💡 TIP: If you get a permission error, open Finder first, navigate to your Mac SSD, create a new empty folder there (e.g. "Inspection_Work"), then select that folder here.
           </div>
         </div>
