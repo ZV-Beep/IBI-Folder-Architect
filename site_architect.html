@@ -624,6 +624,227 @@
   .info-cell-value.accent { color: var(--accent); }
   .info-cell-value.ok { color: var(--accent3); }
 
+
+  /* ═══ PRE-CAPTURE CHECKLIST ═══ */
+  .precapture-card {
+    background: var(--surface);
+    border: 2px solid var(--accent-main);
+    border-radius: 6px;
+    padding: 20px;
+  }
+
+  .precapture-blade-tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+
+  .blade-tab {
+    flex: 1;
+    padding: 10px;
+    border-radius: 6px;
+    border: 2px solid var(--border);
+    background: var(--surface2);
+    color: var(--text-dim);
+    font-family: 'Urbanist', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.15s;
+  }
+
+  .blade-tab.active {
+    border-color: var(--accent-main);
+    background: rgba(91,72,251,0.15);
+    color: var(--text-bright);
+  }
+
+  .blade-tab.complete {
+    border-color: var(--accent3);
+    background: rgba(63,192,194,0.1);
+    color: var(--accent3);
+  }
+
+  .precapture-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 14px;
+    border-radius: 6px;
+    background: var(--surface2);
+    border: 2px solid var(--border);
+    cursor: pointer;
+    transition: all 0.15s;
+    margin-bottom: 10px;
+    user-select: none;
+  }
+
+  .precapture-item:last-child { margin-bottom: 0; }
+
+  .precapture-item:hover { border-color: var(--border-bright); }
+
+  .precapture-item.checked {
+    border-color: var(--accent3);
+    background: rgba(63,192,194,0.08);
+  }
+
+  .precapture-check {
+    width: 26px;
+    height: 26px;
+    border-radius: 4px;
+    border: 2px solid var(--border-bright);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: transparent;
+    transition: all 0.15s;
+    margin-top: 1px;
+  }
+
+  .precapture-item.checked .precapture-check {
+    background: var(--accent3);
+    border-color: var(--accent3);
+    color: #181A1C;
+  }
+
+  .precapture-text {
+    flex: 1;
+  }
+
+  .precapture-title {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-bright);
+    margin-bottom: 3px;
+  }
+
+  .precapture-item.checked .precapture-title { color: var(--accent3); }
+
+  .precapture-detail {
+    font-family: 'Roboto', sans-serif;
+    font-size: 13px;
+    color: var(--text-dim);
+    line-height: 1.5;
+  }
+
+  .precapture-item.checked .precapture-detail { color: var(--text); }
+
+  .precapture-warning {
+    background: rgba(240,180,41,0.1);
+    border: 2px solid rgba(240,180,41,0.3);
+    border-radius: 6px;
+    padding: 12px 16px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 13px;
+    color: var(--warn);
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+
+  .blade-clear-btn {
+    width: 100%;
+    margin-top: 14px;
+    padding: 10px;
+    border-radius: 6px;
+    border: 2px solid var(--border);
+    background: transparent;
+    color: var(--text-dim);
+    font-family: 'Urbanist', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .blade-clear-btn:hover { border-color: var(--border-bright); color: var(--text); }
+
+  /* ═══ QUICK REFERENCE ═══ */
+  .ref-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 20px;
+  }
+
+  .ref-row {
+    display: flex;
+    align-items: stretch;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  .ref-row:last-child { margin-bottom: 0; }
+
+  .ref-icon {
+    font-size: 22px;
+    flex-shrink: 0;
+    width: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ref-body { flex: 1; }
+
+  .ref-title {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-bright);
+    margin-bottom: 4px;
+  }
+
+  .ref-detail {
+    font-family: 'Roboto', sans-serif;
+    font-size: 13px;
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  .ref-detail strong { color: var(--accent3); font-weight: 700; }
+  .ref-detail .bad { color: var(--danger); font-weight: 700; }
+  .ref-detail .warn { color: var(--warn); font-weight: 700; }
+
+  .ref-divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 12px 0;
+  }
+
+  .chamber-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-top: 8px;
+  }
+
+  .chamber-pill {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 8px 6px;
+    text-align: center;
+  }
+
+  .chamber-code {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--accent3);
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  .chamber-name {
+    font-family: 'Roboto', sans-serif;
+    font-size: 11px;
+    color: var(--text);
+  }
+
 </style>
 </head>
 <body>
@@ -825,7 +1046,7 @@
     <!-- RAW FOLDER REMINDER -->
     <div>
       <div class="section-header">
-        <div class="section-num">B</div>
+        <div class="section-num">A</div>
         <div class="section-title">RAW Backup Folder</div>
       </div>
       <div class="card" style="border-color: rgba(255,107,0,0.3);">
@@ -841,10 +1062,162 @@
       </div>
     </div>
 
-    <!-- FILENAME GENERATOR -->
+    <!-- PRE-CAPTURE CHECKLIST -->
+    <div>
+      <div class="section-header">
+        <div class="section-num">B</div>
+        <div class="section-title">Pre-Capture Checklist</div>
+      </div>
+      <div class="precapture-card">
+        <p style="font-family:'Roboto',sans-serif; font-size:14px; color:var(--text); margin-bottom:16px; line-height:1.6;">
+          Complete this checklist <strong style="color:var(--text-bright);">before capturing each blade.</strong> Select the blade you are about to capture.
+        </p>
+
+        <!-- Blade selector tabs -->
+        <div class="precapture-blade-tabs">
+          <div class="blade-tab active" id="tab1" onclick="selectBlade(1)">Blade 1</div>
+          <div class="blade-tab" id="tab2" onclick="selectBlade(2)">Blade 2</div>
+          <div class="blade-tab" id="tab3" onclick="selectBlade(3)">Blade 3</div>
+        </div>
+
+        <!-- Checklist items -->
+        <div id="checklistItems">
+
+          <div class="precapture-warning">
+            ⚠ Gimbal SD card — <strong>_VID and _IMG folders must be empty</strong> before starting. Files left over will contaminate this blade's data.
+          </div>
+
+          <div class="precapture-item" id="pc0" onclick="togglePC(0)">
+            <div class="precapture-check" id="pcc0">✓</div>
+            <div class="precapture-text">
+              <div class="precapture-title">Gimbal SD card _VID and _IMG folders are empty</div>
+              <div class="precapture-detail">Open the Gimbal SD card and confirm both folders have no files inside before capture begins.</div>
+            </div>
+          </div>
+
+          <div class="precapture-item" id="pc1" onclick="togglePC(1)">
+            <div class="precapture-check" id="pcc1">✓</div>
+            <div class="precapture-text">
+              <div class="precapture-title">Insta360: Lens Guards → OFF</div>
+              <div class="precapture-detail">In Accessories Assembly, set Lens Guards to OFF. Must be done for every new clip imported.</div>
+            </div>
+          </div>
+
+          <div class="precapture-item" id="pc2" onclick="togglePC(2)">
+            <div class="precapture-check" id="pcc2">✓</div>
+            <div class="precapture-text">
+              <div class="precapture-title">Insta360: Stitching Optimization → OFF</div>
+              <div class="precapture-detail">In Accessories Assembly, set Stitching Optimization to OFF. Failure causes QI and requires a rerender.</div>
+            </div>
+          </div>
+
+          <div class="precapture-item" id="pc3" onclick="togglePC(3)">
+            <div class="precapture-check" id="pcc3">✓</div>
+            <div class="precapture-text">
+              <div class="precapture-title">Rendering target is Mac SSD — not external drive</div>
+              <div class="precapture-detail">Export path must point to the Videos folder on the Mac SSD. Rendering to external drive doubles render time.</div>
+            </div>
+          </div>
+
+          <div class="precapture-item" id="pc4" onclick="togglePC(4)">
+            <div class="precapture-check" id="pcc4">✓</div>
+            <div class="precapture-text">
+              <div class="precapture-title">360 files moved together — LC then CC then TE</div>
+              <div class="precapture-detail">Always move VID files as a pair. Capture order: LC → CC → TE. Never rename or separate 360 file pairs.</div>
+            </div>
+          </div>
+
+        </div>
+
+        <button class="blade-clear-btn" onclick="clearPC()">↺ Reset checklist for next blade</button>
+      </div>
+    </div>
+
+    <!-- QUICK REFERENCE -->
     <div>
       <div class="section-header">
         <div class="section-num">C</div>
+        <div class="section-title">Quick Reference</div>
+      </div>
+      <div class="ref-card">
+
+        <div class="ref-row">
+          <div class="ref-icon">🗂</div>
+          <div class="ref-body">
+            <div class="ref-title">Chamber Codes</div>
+            <div class="chamber-grid">
+              <div class="chamber-pill">
+                <span class="chamber-code">LC</span>
+                <span class="chamber-name">Leading Edge</span>
+              </div>
+              <div class="chamber-pill">
+                <span class="chamber-code">CC</span>
+                <span class="chamber-name">Central</span>
+              </div>
+              <div class="chamber-pill">
+                <span class="chamber-code">TE</span>
+                <span class="chamber-name">Trailing Edge</span>
+              </div>
+            </div>
+            <div style="font-family:'Roboto',sans-serif; font-size:12px; color:var(--text); margin-top:8px;">
+              Capture order: <strong style="color:var(--accent3);">LC → CC → TE</strong> always
+            </div>
+          </div>
+        </div>
+
+        <div class="ref-divider"></div>
+
+        <div class="ref-row">
+          <div class="ref-icon">📝</div>
+          <div class="ref-body">
+            <div class="ref-title">Naming Format</div>
+            <div class="ref-detail">
+              <strong>SiteName_TurbineID_Blade[N]_[Chamber]_Gimbal.mp4</strong><br>
+              <strong>SiteName_TurbineID_Blade[N]_[Chamber]_360.mp4</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="ref-divider"></div>
+
+        <div class="ref-row">
+          <div class="ref-icon">⚠️</div>
+          <div class="ref-body">
+            <div class="ref-title">Common Mistakes — Don't Do These</div>
+            <div class="ref-detail">
+              <span class="bad">✗ Gimball</span> — it's <strong>Gimbal</strong> (one L)<br>
+              <span class="bad">✗ TC or LE</span> — use <strong>TE</strong> and <strong>LC</strong><br>
+              <span class="bad">✗ Spaces in filenames</span> — use underscores only<br>
+              <span class="bad">✗ Rendering to external drive</span> — use Mac SSD<br>
+              <span class="bad">✗ Moving 360 files separately</span> — always move pairs
+            </div>
+          </div>
+        </div>
+
+        <div class="ref-divider"></div>
+
+        <div class="ref-row">
+          <div class="ref-icon">🔵</div>
+          <div class="ref-body">
+            <div class="ref-title">360 Export Settings</div>
+            <div class="ref-detail">
+              Bitrate: <strong>150 Mbps</strong> &nbsp;·&nbsp;
+              Resolution: <strong>5888 × 2944</strong> &nbsp;·&nbsp;
+              Format: <strong>360 Video</strong><br>
+              Lens Guards: <span class="bad">OFF</span> &nbsp;·&nbsp;
+              Stitching: <span class="bad">OFF</span> &nbsp;·&nbsp;
+              Chromatic Cal: <strong>ON</strong>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- FILENAME GENERATOR -->
+    <div>
+      <div class="section-header">
+        <div class="section-num">D</div>
         <div class="section-title">Filename Generator</div>
       </div>
       <div class="name-generator">
@@ -1211,6 +1584,64 @@
   function dismissBanner() {
     const banner = document.getElementById('sopBanner');
     banner.classList.add('dismissed');
+  }
+
+
+  // ═══ PRE-CAPTURE CHECKLIST ═══
+  const PC_COUNT = 5;
+  let pcState = [false, false, false, false, false];
+  let currentBlade = 1;
+  // Store per-blade check state
+  const bladeChecks = { 1: [false,false,false,false,false], 2: [false,false,false,false,false], 3: [false,false,false,false,false] };
+
+  function selectBlade(n) {
+    // Save current state
+    bladeChecks[currentBlade] = [...pcState];
+    currentBlade = n;
+    // Load new blade state
+    pcState = [...bladeChecks[n]];
+    // Update tabs
+    for (let i = 1; i <= 3; i++) {
+      const tab = document.getElementById(`tab${i}`);
+      tab.className = 'blade-tab';
+      const done = bladeChecks[i].every(v => v);
+      if (done) tab.classList.add('complete');
+      if (i === n) tab.classList.add('active');
+    }
+    // Update checkboxes
+    for (let i = 0; i < PC_COUNT; i++) {
+      const item = document.getElementById(`pc${i}`);
+      const box = document.getElementById(`pcc${i}`);
+      if (pcState[i]) { item.classList.add('checked'); box.style.color = '#181A1C'; }
+      else { item.classList.remove('checked'); box.style.color = 'transparent'; }
+    }
+  }
+
+  function togglePC(i) {
+    pcState[i] = !pcState[i];
+    bladeChecks[currentBlade][i] = pcState[i];
+    const item = document.getElementById(`pc${i}`);
+    const box = document.getElementById(`pcc${i}`);
+    if (pcState[i]) { item.classList.add('checked'); box.style.color = '#181A1C'; }
+    else { item.classList.remove('checked'); box.style.color = 'transparent'; }
+    // Update tab badge
+    const tab = document.getElementById(`tab${currentBlade}`);
+    if (pcState.every(v => v)) {
+      tab.classList.add('complete');
+      toast(`✓ Blade ${currentBlade} pre-capture checks complete!`, 'ok');
+    } else {
+      tab.classList.remove('complete');
+    }
+  }
+
+  function clearPC() {
+    pcState = [false, false, false, false, false];
+    bladeChecks[currentBlade] = [...pcState];
+    for (let i = 0; i < PC_COUNT; i++) {
+      document.getElementById(`pc${i}`).classList.remove('checked');
+      document.getElementById(`pcc${i}`).style.color = 'transparent';
+    }
+    document.getElementById(`tab${currentBlade}`).classList.remove('complete');
   }
 
   function delay(ms) {
