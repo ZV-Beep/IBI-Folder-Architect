@@ -3,241 +3,205 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>IBI Tools — Zeitview Internal Blade Inspection</title>
+<title>IBI Tools — Zeitview</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Barlow+Condensed:wght@400;700;900&family=Barlow:wght@300;400&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Urbanist:wght@400;600;700;900&family=Roboto:wght@400;500;700&display=swap');
 
   :root {
-    --bg: #0e0d14;
-    --surface: #181A1C;
-    --border: #2C3543;
-    --accent: #7363FB;
-    --accent-main: #5B48FB;
-    --accent2: #3FC0C2;
+    --bg: #181A1C;
+    --surface: #2C3543;
+    --surface2: #455C88;
+    --border: #455C88;
+    --purple: #5B48FB;
+    --purple-light: #9C91FC;
+    --teal: #3FC0C2;
+    --blue: #1889F1;
     --warn: #f0b429;
     --danger: #e8365d;
-    --text: #BEC5D2;
-    --text-dim: #545B65;
-    --text-bright: #E1E8EF;
-    --mono: 'Share Tech Mono', monospace;
-    --head: 'Barlow Condensed', sans-serif;
-    --body: 'Barlow', sans-serif;
+    --white: #FFFFFF;
+    --off-white: #E1E8EF;
+    --mid: #BEC5D2;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
     background: var(--bg);
-    color: var(--text);
-    font-family: var(--body);
+    color: var(--white);
+    font-family: 'Roboto', sans-serif;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 40px 20px;
+    padding: 48px 24px;
   }
 
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image:
-      linear-gradient(rgba(115,99,251,0.012) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(115,99,251,0.012) 1px, transparent 1px);
-    background-size: 40px 40px;
-    pointer-events: none;
-  }
+  .container { max-width: 680px; width: 100%; }
 
-  .container {
-    position: relative;
-    max-width: 640px;
-    width: 100%;
-  }
-
-  .tag {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--accent);
+  .brand-tag {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
     letter-spacing: 4px;
     text-transform: uppercase;
-    margin-bottom: 10px;
-    opacity: 0.8;
+    color: var(--purple-light);
+    margin-bottom: 12px;
   }
 
   h1 {
-    font-family: var(--head);
-    font-size: 52px;
+    font-family: 'Urbanist', sans-serif;
+    font-size: 56px;
     font-weight: 900;
-    letter-spacing: 4px;
-    color: var(--text-bright);
+    color: var(--white);
     line-height: 1;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
   }
 
-  h1 span { color: var(--accent); }
+  h1 span { color: var(--purple-light); }
 
   .subtitle {
-    font-family: var(--body);
-    font-size: 13px;
-    color: var(--text-dim);
-    margin-bottom: 40px;
-    letter-spacing: 1px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--mid);
+    margin-bottom: 48px;
   }
 
-  .tools {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    width: 100%;
-  }
+  .tools { display: flex; flex-direction: column; gap: 20px; }
 
   .tool-card {
     background: var(--surface);
-    border: 1px solid var(--border);
-    border-left: 3px solid var(--card-accent, var(--accent-main));
-    border-radius: 4px;
-    padding: 24px 28px;
+    border-radius: 8px;
+    padding: 28px;
+    border-left: 5px solid var(--card-color);
   }
 
-  .tool-card.folder { --card-accent: #5B48FB; }
-  .tool-card.auditor { --card-accent: #3FC0C2; }
+  .tool-card.folder { --card-color: #5B48FB; }
+  .tool-card.auditor { --card-color: #3FC0C2; }
 
   .tool-num {
-    font-family: var(--mono);
-    font-size: 9px;
+    font-family: 'Urbanist', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
     letter-spacing: 3px;
-    color: var(--text-dim);
     text-transform: uppercase;
-    margin-bottom: 8px;
+    color: var(--mid);
+    margin-bottom: 6px;
   }
 
   .tool-name {
-    font-family: var(--head);
-    font-size: 28px;
+    font-family: 'Urbanist', sans-serif;
+    font-size: 32px;
     font-weight: 900;
-    letter-spacing: 3px;
-    color: var(--text-bright);
-    text-transform: uppercase;
-    margin-bottom: 8px;
+    color: var(--white);
+    margin-bottom: 10px;
   }
 
-  .tool-card.folder .tool-name span { color: #5B48FB; }
+  .tool-card.folder .tool-name span { color: #9C91FC; }
   .tool-card.auditor .tool-name span { color: #3FC0C2; }
 
   .tool-desc {
-    font-family: var(--body);
-    font-size: 13px;
-    color: var(--text-dim);
-    line-height: 1.6;
-    margin-bottom: 14px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--off-white);
+    line-height: 1.7;
+    margin-bottom: 20px;
   }
 
   .tool-tags {
     display: flex;
     gap: 8px;
     flex-wrap: wrap;
-    margin-bottom: 20px;
+    margin-bottom: 24px;
   }
 
   .tag-pill {
-    font-family: var(--mono);
-    font-size: 9px;
-    letter-spacing: 1px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
     text-transform: uppercase;
-    padding: 3px 10px;
-    border-radius: 2px;
-    background: rgba(255,255,255,0.04);
-    border: 1px solid var(--border);
-    color: var(--text-dim);
+    letter-spacing: 1px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.08);
+    color: var(--mid);
+    border: 1px solid rgba(255,255,255,0.12);
   }
 
-  .tool-actions {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-  }
+  .tool-actions { display: flex; gap: 12px; flex-wrap: wrap; }
 
   .btn-open {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 10px 20px;
-    border-radius: 2px;
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 1px;
-    text-decoration: none;
-    text-transform: uppercase;
+    font-family: 'Urbanist', sans-serif;
+    font-size: 15px;
     font-weight: 700;
-    background: var(--accent-main);
-    color: #fff;
+    padding: 12px 28px;
+    border-radius: 6px;
+    text-decoration: none;
+    background: var(--purple);
+    color: var(--white);
     transition: background 0.15s;
+    letter-spacing: 0.5px;
   }
 
   .btn-open:hover { background: #7363FB; }
 
   .btn-download {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 10px 18px;
-    border-radius: 2px;
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 1px;
-    text-decoration: none;
-    text-transform: uppercase;
+    font-family: 'Urbanist', sans-serif;
+    font-size: 15px;
     font-weight: 700;
-    background: rgba(115,99,251,0.1);
-    color: #9C91FC;
-    border: 1px solid rgba(115,99,251,0.35);
+    padding: 12px 24px;
+    border-radius: 6px;
+    text-decoration: none;
+    background: transparent;
+    color: var(--off-white);
+    border: 2px solid #455C88;
     transition: all 0.15s;
+    letter-spacing: 0.5px;
   }
 
   .btn-download:hover {
-    background: rgba(115,99,251,0.2);
-    border-color: var(--accent-main);
-    color: #fff;
+    border-color: var(--purple-light);
+    color: var(--white);
   }
-
-  .btn-download .dl-icon { font-size: 13px; }
 
   .divider {
     border: none;
-    border-top: 1px solid var(--border);
-    margin: 32px 0;
+    border-top: 1px solid var(--surface);
+    margin: 40px 0 24px;
   }
 
   .browser-note {
-    font-family: var(--mono);
-    font-size: 10px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
     color: var(--warn);
-    background: rgba(240,180,41,0.05);
-    border: 1px solid rgba(240,180,41,0.15);
-    border-radius: 3px;
-    padding: 10px 16px;
+    background: rgba(240,180,41,0.1);
+    border: 1px solid rgba(240,180,41,0.25);
+    border-radius: 6px;
+    padding: 12px 20px;
     text-align: center;
-    letter-spacing: 1px;
-    margin-top: 16px;
+    margin-top: 20px;
   }
 
   .footer {
     margin-top: 32px;
-    font-family: var(--mono);
-    font-size: 10px;
-    color: var(--text-dim);
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    color: var(--mid);
     text-align: center;
-    letter-spacing: 2px;
     line-height: 2;
+    letter-spacing: 1px;
+    text-transform: uppercase;
   }
 </style>
 </head>
 <body>
 <div class="container">
 
-  <div class="tag">Zeitview // Internal Blade Inspection</div>
-  <h1>IBI <span>TOOLS</span></h1>
+  <div class="brand-tag">Zeitview // Internal Blade Inspection</div>
+  <h1>IBI <span>Tools</span></h1>
   <div class="subtitle">Wind Turbine Inspection — Data Management Suite</div>
 
   <div class="tools">
@@ -254,9 +218,7 @@
       </div>
       <div class="tool-actions">
         <a href="site_architect.html" class="btn-open">Open Tool →</a>
-        <a href="site_architect.html" download="IBI_Folder_Creation.html" class="btn-download">
-          <span class="dl-icon">⬇</span> Save for Offline Use
-        </a>
+        <a href="site_architect.html" download="IBI_Folder_Creation.html" class="btn-download">⬇ Save for Offline Use</a>
       </div>
     </div>
 
@@ -272,9 +234,7 @@
       </div>
       <div class="tool-actions">
         <a href="data_auditor.html" class="btn-open">Open Tool →</a>
-        <a href="data_auditor.html" download="IBI_Data_Auditor.html" class="btn-download">
-          <span class="dl-icon">⬇</span> Save for Offline Use
-        </a>
+        <a href="data_auditor.html" download="IBI_Data_Auditor.html" class="btn-download">⬇ Save for Offline Use</a>
       </div>
     </div>
 
@@ -285,8 +245,8 @@
   <hr class="divider">
 
   <div class="footer">
-    ZEITVIEW INTERNAL TOOLS · IBI DATA MANAGEMENT · v1.0<br>
-    USE ON MAC SSD ONLY — DO NOT PROCESS ON EXTERNAL DRIVES
+    Zeitview Internal Tools · IBI Data Management · v1.0<br>
+    Use on Mac SSD only — Do not process on external drives
   </div>
 
 </div>

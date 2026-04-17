@@ -5,16 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>DATA AUDITOR // QC Validation Engine</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Barlow+Condensed:wght@300;400;600;700;900&family=Barlow:wght@300;400;500&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Urbanist:wght@400;600;700;900&family=Roboto:wght@400;500;700&display=swap');
 
   :root {
-    --bg: #0e0d14;
-    --surface: #181A1C;
-    --surface2: #1e2028;
-    --surface3: #252830;
-    --border: #2C3543;
-    --border-bright: #455C88;
-    --accent: #7363FB;
+    --bg: #181A1C;
+    --surface: #2C3543;
+    --surface2: #363f50;
+    --surface3: #455C88;
+    --border: #455C88;
+    --border-bright: #6b82a8;
+    --accent: #9C91FC;
     --accent-main: #5B48FB;
     --accent2: #3FC0C2;
     --accent3: #3FC0C2;
@@ -23,12 +23,12 @@
     --warn: #f0b429;
     --danger: #e8365d;
     --fail: #e8365d;
-    --text: #BEC5D2;
-    --text-dim: #545B65;
-    --text-bright: #E1E8EF;
+    --text: #E1E8EF;
+    --text-dim: #BEC5D2;
+    --text-bright: #FFFFFF;
     --mono: 'Share Tech Mono', monospace;
-    --head: 'Barlow Condensed', sans-serif;
-    --body: 'Barlow', sans-serif;
+    --head: 'Urbanist', sans-serif;
+    --body: 'Roboto', sans-serif;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -36,8 +36,8 @@
   body {
     background: var(--bg);
     color: var(--text);
-    font-family: var(--body);
-    font-size: 14px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
     min-height: 100vh;
     overflow-x: hidden;
   }
@@ -63,7 +63,7 @@
     color: var(--accent);
     text-align: center;
     padding: 10px 20px;
-    font-family: var(--head);
+    font-family: 'Urbanist', sans-serif;
     font-weight: 900;
     font-size: 14px;
     letter-spacing: 3px;
@@ -91,7 +91,7 @@
     background: rgba(115,99,251,0.15);
     border: 1px solid rgba(115,99,251,0.35);
     color: var(--accent);
-    font-family: var(--head);
+    font-family: 'Urbanist', sans-serif;
     font-size: 11px;
     font-weight: 700;
     letter-spacing: 1px;
@@ -118,7 +118,7 @@
   }
 
   .app-tag {
-    font-family: var(--mono);
+    font-family: 'Share Tech Mono', monospace;
     font-size: 10px;
     color: var(--accent);
     letter-spacing: 4px;
@@ -128,10 +128,10 @@
   }
 
   .app-title {
-    font-family: var(--head);
-    font-size: 42px;
+    font-family: 'Urbanist', sans-serif;
+    font-size: 44px;
     font-weight: 900;
-    letter-spacing: 4px;
+    letter-spacing: 3px;
     color: var(--text-bright);
     line-height: 1;
   }
@@ -139,9 +139,9 @@
   .app-title span { color: var(--danger); }
 
   .app-subtitle {
-    font-family: var(--body);
-    font-size: 12px;
-    color: var(--text-dim);
+    font-family: 'Roboto', sans-serif;
+    font-size: 13px;
+    color: var(--text);
     margin-top: 6px;
     letter-spacing: 1px;
   }
@@ -170,7 +170,7 @@
   }
 
   .verdict-label {
-    font-family: var(--mono);
+    font-family: 'Share Tech Mono', monospace;
     font-size: 10px;
     letter-spacing: 3px;
     color: var(--text-dim);
@@ -179,7 +179,7 @@
   }
 
   .verdict-text {
-    font-family: var(--head);
+    font-family: 'Urbanist', sans-serif;
     font-size: 56px;
     font-weight: 900;
     letter-spacing: 6px;
@@ -192,9 +192,9 @@
   .verdict-text.fail { color: var(--fail); text-shadow: 0 0 20px rgba(232,54,93,0.4); }
 
   .verdict-sub {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--text-dim);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 12px;
+    color: var(--text);
     margin-top: 6px;
     min-height: 16px;
     transition: color 0.4s;
@@ -235,7 +235,7 @@
   }
 
   .section-num {
-    font-family: var(--mono);
+    font-family: 'Share Tech Mono', monospace;
     font-size: 10px;
     color: var(--accent);
     background: rgba(115,99,251,0.08);
@@ -250,8 +250,8 @@
   }
 
   .section-title {
-    font-family: var(--head);
-    font-size: 15px;
+    font-family: 'Urbanist', sans-serif;
+    font-size: 16px;
     font-weight: 700;
     letter-spacing: 2px;
     text-transform: uppercase;
@@ -271,22 +271,22 @@
 
   .field label {
     display: block;
-    font-family: var(--mono);
-    font-size: 10px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: var(--text-dim);
+    color: var(--text);
     margin-bottom: 6px;
   }
 
   .field input {
     width: 100%;
     background: var(--surface2);
-    border: 1px solid var(--border);
+    border: 1px solid var(--border-bright);
     border-radius: 2px;
-    padding: 9px 12px;
-    font-family: var(--mono);
-    font-size: 13px;
+    padding: 11px 14px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 14px;
     color: var(--text-bright);
     outline: none;
     transition: border-color 0.2s;
@@ -308,7 +308,7 @@
     padding: 10px 18px;
     border: none;
     border-radius: 2px;
-    font-family: var(--head);
+    font-family: 'Urbanist', sans-serif;
     font-size: 14px;
     font-weight: 700;
     letter-spacing: 2px;
@@ -355,7 +355,7 @@
     padding: 10px 14px;
     border-radius: 2px;
     margin-bottom: 10px;
-    font-family: var(--head);
+    font-family: 'Urbanist', sans-serif;
     font-weight: 700;
     font-size: 13px;
     letter-spacing: 2px;
@@ -375,7 +375,7 @@
   }
 
   .tier-count {
-    font-family: var(--mono);
+    font-family: 'Share Tech Mono', monospace;
     font-size: 18px;
     font-weight: 700;
     min-width: 32px;
@@ -394,8 +394,8 @@
   .alert-item {
     padding: 10px 14px;
     border-radius: 2px;
-    font-family: var(--mono);
-    font-size: 11px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 13px;
     line-height: 1.6;
     display: flex;
     gap: 10px;
@@ -426,7 +426,7 @@
 
   .alert-filename {
     font-weight: 700;
-    font-size: 12px;
+    font-size: 14px;
     display: block;
     color: var(--text-bright);
     margin-bottom: 2px;
@@ -453,7 +453,7 @@
   .blade-card.fail { border-color: rgba(232,54,93,0.35); }
 
   .blade-card-title {
-    font-family: var(--head);
+    font-family: 'Urbanist', sans-serif;
     font-size: 13px;
     font-weight: 700;
     letter-spacing: 2px;
@@ -462,7 +462,7 @@
   }
 
   .blade-stat {
-    font-family: var(--mono);
+    font-family: 'Share Tech Mono', monospace;
     font-size: 22px;
     font-weight: 700;
     line-height: 1;
@@ -474,9 +474,9 @@
   .blade-stat.fail { color: var(--danger); }
 
   .blade-stat-label {
-    font-family: var(--mono);
-    font-size: 9px;
-    color: var(--text-dim);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    color: var(--text);
     letter-spacing: 1px;
     text-transform: uppercase;
   }
@@ -531,8 +531,8 @@
   }
 
   .check-label {
-    font-family: var(--mono);
-    font-size: 11px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 14px;
     color: var(--text);
     line-height: 1.5;
   }
@@ -574,8 +574,8 @@
   }
 
   .summary-val {
-    font-family: var(--mono);
-    font-size: 22px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 26px;
     font-weight: 700;
     color: var(--text-bright);
     line-height: 1;
@@ -587,9 +587,9 @@
   .summary-val.green { color: var(--accent3); }
 
   .summary-lbl {
-    font-family: var(--mono);
-    font-size: 9px;
-    color: var(--text-dim);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 14px;
+    color: var(--text);
     text-transform: uppercase;
     letter-spacing: 1px;
   }
@@ -600,8 +600,8 @@
     border: 1px solid var(--border);
     border-radius: 2px;
     padding: 12px;
-    font-family: var(--mono);
-    font-size: 11px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 12px;
     max-height: 160px;
     overflow-y: auto;
     line-height: 1.9;
@@ -636,7 +636,7 @@
     border: 1px solid var(--border-bright);
     border-radius: 3px;
     padding: 12px 18px;
-    font-family: var(--mono);
+    font-family: 'Share Tech Mono', monospace;
     font-size: 12px;
     color: var(--text-bright);
     max-width: 340px;
@@ -674,7 +674,7 @@
   }
 
   .placeholder-state p {
-    font-family: var(--mono);
+    font-family: 'Share Tech Mono', monospace;
     font-size: 11px;
     line-height: 1.8;
   }
@@ -686,10 +686,10 @@
     background: transparent;
     border: 2px solid var(--border);
     border-radius: 3px;
-    font-family: var(--head);
+    font-family: 'Urbanist', sans-serif;
     font-weight: 900;
-    font-size: 18px;
-    letter-spacing: 4px;
+    font-size: 20px;
+    letter-spacing: 3px;
     text-transform: uppercase;
     color: var(--text-dim);
     cursor: not-allowed;
@@ -719,15 +719,15 @@
   .file-table {
     width: 100%;
     border-collapse: collapse;
-    font-family: var(--mono);
-    font-size: 11px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 13px;
   }
 
   .file-table th {
     text-align: left;
     padding: 7px 10px;
     color: var(--text-dim);
-    font-size: 9px;
+    font-size: 11px;
     letter-spacing: 2px;
     text-transform: uppercase;
     border-bottom: 1px solid var(--border);
@@ -858,7 +858,7 @@
       <div class="card" style="position:relative;">
         <!-- Pre-scan overlay -->
         <div id="checklistOverlay" style="position:absolute;inset:0;background:rgba(8,11,13,0.75);border-radius:3px;display:flex;align-items:center;justify-content:center;z-index:10;backdrop-filter:blur(2px);">
-          <div style="font-family:var(--mono);font-size:11px;color:var(--text-dim);text-align:center;letter-spacing:1px;">
+          <div style="font-family:var(--mono);font-size:13px;color:var(--text);text-align:center;letter-spacing:1px;">
             Run a scan first<br><span style="font-size:9px;opacity:0.6;">checklist unlocks when scan is complete</span>
           </div>
         </div>
