@@ -10,15 +10,10 @@
   :root {
     --bg: #0e0d14;
     --surface: #181A1C;
-    --surface2: #1e2028;
-    --surface3: #252830;
     --border: #2C3543;
-    --border-bright: #455C88;
     --accent: #7363FB;
     --accent-main: #5B48FB;
     --accent2: #3FC0C2;
-    --accent3: #3FC0C2;
-    --blue: #1889F1;
     --warn: #f0b429;
     --danger: #e8365d;
     --text: #BEC5D2;
@@ -86,7 +81,7 @@
     font-family: var(--body);
     font-size: 13px;
     color: var(--text-dim);
-    margin-bottom: 48px;
+    margin-bottom: 40px;
     letter-spacing: 1px;
   }
 
@@ -98,38 +93,15 @@
   }
 
   .tool-card {
-    display: block;
-    text-decoration: none;
     background: var(--surface);
     border: 1px solid var(--border);
+    border-left: 3px solid var(--card-accent, var(--accent-main));
     border-radius: 4px;
     padding: 24px 28px;
-    transition: all 0.2s;
-    position: relative;
-    overflow: hidden;
   }
 
-  .tool-card::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 3px;
-    background: var(--card-accent, var(--accent));
-    transition: width 0.2s;
-  }
-
-  .tool-card:hover {
-    border-color: var(--card-accent, var(--accent));
-    transform: translateX(4px);
-    box-shadow: -4px 0 20px rgba(0,0,0,0.3);
-  }
-
-  .tool-card:hover::before { width: 4px; }
-
-  .tool-card.folder { --card-accent: var(--accent-main); }
-  .tool-card.auditor { --card-accent: var(--accent2); }
+  .tool-card.folder { --card-accent: #5B48FB; }
+  .tool-card.auditor { --card-accent: #3FC0C2; }
 
   .tool-num {
     font-family: var(--mono);
@@ -147,10 +119,11 @@
     letter-spacing: 3px;
     color: var(--text-bright);
     text-transform: uppercase;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
   }
 
-  .tool-name span { color: var(--card-accent, var(--accent)); }
+  .tool-card.folder .tool-name span { color: #5B48FB; }
+  .tool-card.auditor .tool-name span { color: #3FC0C2; }
 
   .tool-desc {
     font-family: var(--body);
@@ -164,6 +137,7 @@
     display: flex;
     gap: 8px;
     flex-wrap: wrap;
+    margin-bottom: 20px;
   }
 
   .tag-pill {
@@ -178,88 +152,61 @@
     color: var(--text-dim);
   }
 
-  .tool-arrow {
-    position: absolute;
-    right: 24px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 20px;
-    color: var(--text-dim);
-    transition: color 0.2s, transform 0.2s;
-  }
-
-  .tool-card:hover .tool-arrow {
-    color: var(--card-accent, var(--accent));
-    transform: translateY(-50%) translateX(3px);
-  }
-
   .tool-actions {
     display: flex;
     gap: 10px;
-    margin-top: 16px;
+    align-items: center;
   }
 
-  .btn-open, .btn-download {
+  .btn-open {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    padding: 8px 16px;
+    padding: 10px 20px;
     border-radius: 2px;
     font-family: var(--mono);
     font-size: 11px;
     letter-spacing: 1px;
     text-decoration: none;
     text-transform: uppercase;
-    transition: all 0.15s;
     font-weight: 700;
-  }
-
-  .btn-open {
     background: var(--accent-main);
     color: #fff;
+    transition: background 0.15s;
   }
 
-  .btn-open:hover { background: #9C91FC; }
+  .btn-open:hover { background: #7363FB; }
 
   .btn-download {
-    background: transparent;
-    color: var(--text-dim);
-    border: 1px solid var(--border);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    border-radius: 2px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 700;
+    background: rgba(115,99,251,0.1);
+    color: #9C91FC;
+    border: 1px solid rgba(115,99,251,0.35);
+    transition: all 0.15s;
   }
 
   .btn-download:hover {
+    background: rgba(115,99,251,0.2);
     border-color: var(--accent-main);
-    color: var(--accent-main);
+    color: #fff;
   }
 
-  .footer {
-    margin-top: 48px;
-    font-family: var(--mono);
-    font-size: 10px;
-    color: var(--text-dim);
-    text-align: center;
-    letter-spacing: 2px;
-    line-height: 2;
-  }
+  .btn-download .dl-icon { font-size: 13px; }
 
   .divider {
     border: none;
     border-top: 1px solid var(--border);
     margin: 32px 0;
-  }
-
-  .sop-note {
-    font-family: var(--mono);
-    font-size: 10px;
-    color: var(--danger);
-    background: rgba(232,54,93,0.06);
-    border: 1px solid rgba(232,54,93,0.2);
-    border-radius: 3px;
-    padding: 10px 16px;
-    text-align: center;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    margin-bottom: 32px;
   }
 
   .browser-note {
@@ -274,6 +221,16 @@
     letter-spacing: 1px;
     margin-top: 16px;
   }
+
+  .footer {
+    margin-top: 32px;
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--text-dim);
+    text-align: center;
+    letter-spacing: 2px;
+    line-height: 2;
+  }
 </style>
 </head>
 <body>
@@ -287,7 +244,7 @@
 
     <div class="tool-card folder">
       <div class="tool-num">Tool 01</div>
-      <div class="tool-name">IBI — <span>Folder Creation</span></div>
+      <div class="tool-name"><span>Folder Creation</span></div>
       <div class="tool-desc">Creates the complete end-deliverables and RAW backup folder structure on the Mac SSD. Run this in the nacelle before capturing each turbine.</div>
       <div class="tool-tags">
         <span class="tag-pill">Nacelle Use</span>
@@ -296,8 +253,10 @@
         <span class="tag-pill">Pre-Capture</span>
       </div>
       <div class="tool-actions">
-        <a href="site_architect.html" class="btn-open">Open →</a>
-        <a href="site_architect.html" download="IBI_Folder_Creation.html" class="btn-download">⬇ Download</a>
+        <a href="site_architect.html" class="btn-open">Open Tool →</a>
+        <a href="site_architect.html" download="IBI_Folder_Creation.html" class="btn-download">
+          <span class="dl-icon">⬇</span> Save for Offline Use
+        </a>
       </div>
     </div>
 
@@ -312,33 +271,12 @@
         <span class="tag-pill">Final Pass</span>
       </div>
       <div class="tool-actions">
-        <a href="data_auditor.html" class="btn-open">Open →</a>
-        <a href="data_auditor.html" download="IBI_Data_Auditor.html" class="btn-download">⬇ Download</a>
+        <a href="data_auditor.html" class="btn-open">Open Tool →</a>
+        <a href="data_auditor.html" download="IBI_Data_Auditor.html" class="btn-download">
+          <span class="dl-icon">⬇</span> Save for Offline Use
+        </a>
       </div>
     </div>
-
-  </div>
-      <div class="tool-actions" onclick="event.preventDefault()">
-        <a href="site_architect.html" class="btn-open">Open →</a>
-        <a href="site_architect.html" download="IBI_Folder_Creation.html" class="btn-download">⬇ Download</a>
-      </div>
-    </a>
-
-    <div class="tool-card auditor">
-      <div class="tool-num">Tool 02</div>
-      <div class="tool-name">Data <span>Auditor</span></div>
-      <div class="tool-desc">End-of-day QC validation engine. Scans your Turbine folder, checks all filenames, video counts, and folder completeness. Issues a Final Pass when everything is clean.</div>
-      <div class="tool-tags">
-        <span class="tag-pill">End of Day</span>
-        <span class="tag-pill">QC Validation</span>
-        <span class="tag-pill">Naming Check</span>
-        <span class="tag-pill">Final Pass</span>
-      </div>
-      <div class="tool-actions" onclick="event.preventDefault()">
-        <a href="data_auditor.html" class="btn-open">Open →</a>
-        <a href="data_auditor.html" download="IBI_Data_Auditor.html" class="btn-download">⬇ Download</a>
-      </div>
-    </a>
 
   </div>
 
