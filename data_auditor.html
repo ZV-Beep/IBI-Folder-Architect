@@ -757,9 +757,297 @@
   .badge.fail { background: rgba(240,71,106,0.12); color: var(--danger); border: 1px solid rgba(240,71,106,0.25); }
   .badge.warn { background: rgba(240,180,41,0.1); color: var(--warn); border: 1px solid rgba(240,180,41,0.25); }
 
+
+  /* ═══ FIRST RUN MODAL ═══ */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(10,9,20,0.93);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .modal-overlay.hidden { display: none; }
+
+  .modal-box {
+    background: #2C3543;
+    border: 2px solid #5B48FB;
+    border-radius: 12px;
+    max-width: 560px;
+    width: 100%;
+    padding: 36px;
+    position: relative;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+
+  .modal-step { display: none; }
+  .modal-step.active { display: block; }
+
+  .modal-step-num {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 3px;
+    color: #9C91FC;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .modal-step-title {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 28px;
+    font-weight: 900;
+    color: #FFFFFF;
+    margin-bottom: 14px;
+    line-height: 1.2;
+  }
+
+  .modal-step-title span { color: #9C91FC; }
+
+  .modal-step-body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+    color: #E1E8EF;
+    line-height: 1.8;
+    margin-bottom: 20px;
+  }
+
+  .modal-step-body strong { color: #FFFFFF; }
+
+  .modal-action-box {
+    background: rgba(91,72,251,0.12);
+    border: 1px solid rgba(91,72,251,0.3);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-bottom: 20px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    color: #E1E8EF;
+    line-height: 1.8;
+  }
+
+  .modal-action-box .step-line {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    margin-bottom: 8px;
+  }
+
+  .modal-action-box .step-line:last-child { margin-bottom: 0; }
+
+  .modal-action-box .step-n {
+    font-family: 'Urbanist', sans-serif;
+    font-weight: 900;
+    font-size: 15px;
+    color: #9C91FC;
+    flex-shrink: 0;
+    width: 24px;
+  }
+
+  .modal-result-box {
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  .modal-result-box.pass {
+    background: rgba(63,192,194,0.1);
+    border: 2px solid rgba(63,192,194,0.35);
+    color: #E1E8EF;
+  }
+
+  .modal-result-box.fail {
+    background: rgba(240,71,106,0.1);
+    border: 2px solid rgba(240,71,106,0.35);
+    color: #E1E8EF;
+  }
+
+  .modal-result-box .result-label {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 18px;
+    font-weight: 900;
+    margin-bottom: 6px;
+  }
+
+  .modal-result-box.pass .result-label { color: #3FC0C2; }
+  .modal-result-box.fail .result-label { color: #f0476a; }
+
+  .modal-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 8px;
+  }
+
+  .modal-dots {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .modal-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #455C88;
+    transition: all 0.2s;
+  }
+
+  .modal-dot.active {
+    background: #5B48FB;
+    width: 24px;
+    border-radius: 4px;
+  }
+
+  .modal-dot.done { background: #3FC0C2; }
+
+  .btn-modal-next {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    padding: 12px 28px;
+    border-radius: 6px;
+    border: none;
+    background: #5B48FB;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+
+  .btn-modal-next:hover { background: #7363FB; }
+
+  .btn-modal-skip {
+    font-family: 'Roboto', sans-serif;
+    font-size: 13px;
+    color: #545B65;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    transition: color 0.15s;
+  }
+
+  .btn-modal-skip:hover { color: #BEC5D2; }
+
 </style>
 </head>
 <body>
+
+
+<!-- FIRST RUN WALKTHROUGH MODAL -->
+<div class="modal-overlay" id="firstRunModal">
+  <div class="modal-box">
+
+    <!-- Step 1: What is this -->
+    <div class="modal-step active" id="mStep0">
+      <div class="modal-step-num">Welcome · Step 1 of 4</div>
+      <div class="modal-step-title">What is the<br><span>Data Auditor?</span></div>
+      <div class="modal-step-body">
+        This tool checks your data <strong>after you have finished capturing and sorting a turbine.</strong><br><br>
+        It scans your files, checks that every video is named correctly, and confirms all 6 videos per blade are present. When everything is correct, it issues a <strong>Final Pass</strong> so you can compress and upload.
+      </div>
+      <div class="modal-action-box">
+        <div class="step-line"><span class="step-n">⏱</span><span><strong>When to use it:</strong> At the end of the day, once all 3 blades have been captured, sorted, and rendered.</span></div>
+        <div class="step-line"><span class="step-n">📁</span><span><strong>What to have ready:</strong> Your Turbine folder (e.g. T01) with Blade 1, Blade 2, Blade 3 inside — each containing a Videos folder with the rendered files.</span></div>
+      </div>
+      <div class="modal-nav">
+        <button class="btn-modal-skip" onclick="skipWalkthrough()">Skip — I know what I'm doing</button>
+        <div class="modal-dots">
+          <div class="modal-dot active"></div>
+          <div class="modal-dot"></div>
+          <div class="modal-dot"></div>
+          <div class="modal-dot"></div>
+        </div>
+        <button class="btn-modal-next" onclick="nextStep()">Next →</button>
+      </div>
+    </div>
+
+    <!-- Step 2: How to scan -->
+    <div class="modal-step" id="mStep1">
+      <div class="modal-step-num">Step 2 of 4</div>
+      <div class="modal-step-title">Scanning your<br><span>Turbine folder</span></div>
+      <div class="modal-step-body">
+        Click <strong>Scan Turbine Folder</strong> and navigate to your turbine folder — for example, the folder named <strong>T01</strong> inside your site folder.
+      </div>
+      <div class="modal-action-box">
+        <div class="step-line"><span class="step-n">1.</span><span>Click <strong>Scan Turbine Folder</strong></span></div>
+        <div class="step-line"><span class="step-n">2.</span><span>In the file picker, navigate into your site folder (e.g. <strong>Moerdijk</strong>)</span></div>
+        <div class="step-line"><span class="step-n">3.</span><span>Select the turbine folder — e.g. <strong>T01</strong></span></div>
+        <div class="step-line"><span class="step-n">4.</span><span>The tool automatically detects the site name and turbine ID from the folder names — <strong>you don't need to type anything</strong></span></div>
+      </div>
+      <div class="modal-nav">
+        <button class="btn-modal-skip" onclick="prevStep()">← Back</button>
+        <div class="modal-dots">
+          <div class="modal-dot done"></div>
+          <div class="modal-dot active"></div>
+          <div class="modal-dot"></div>
+          <div class="modal-dot"></div>
+        </div>
+        <button class="btn-modal-next" onclick="nextStep()">Next →</button>
+      </div>
+    </div>
+
+    <!-- Step 3: Reading results -->
+    <div class="modal-step" id="mStep2">
+      <div class="modal-step-num">Step 3 of 4</div>
+      <div class="modal-step-title">Reading the<br><span>results</span></div>
+      <div class="modal-step-body">
+        After scanning, you will see a <strong>PASS</strong> or <strong>FAIL</strong> verdict at the top right. Here is what each means:
+      </div>
+      <div class="modal-result-box pass">
+        <div class="result-label">✓ PASS</div>
+        All 18 videos are present, all filenames are correct, and no duplicates were found. You are clear to proceed to compression and upload.
+      </div>
+      <div class="modal-result-box fail">
+        <div class="result-label">✗ FAIL</div>
+        One or more critical errors were found — missing videos, wrong filename, or duplicates. Scroll down to see exactly which files have errors. Fix them, then click <strong>Run Again</strong> to re-scan without re-selecting the folder.
+      </div>
+      <div class="modal-nav">
+        <button class="btn-modal-skip" onclick="prevStep()">← Back</button>
+        <div class="modal-dots">
+          <div class="modal-dot done"></div>
+          <div class="modal-dot done"></div>
+          <div class="modal-dot active"></div>
+          <div class="modal-dot"></div>
+        </div>
+        <button class="btn-modal-next" onclick="nextStep()">Next →</button>
+      </div>
+    </div>
+
+    <!-- Step 4: Final pass -->
+    <div class="modal-step" id="mStep3">
+      <div class="modal-step-num">Step 4 of 4</div>
+      <div class="modal-step-title">Confirming<br><span>Final Pass</span></div>
+      <div class="modal-step-body">
+        Once the scan shows no errors, tick all 3 items in the <strong>Compliance Checklist</strong> and click <strong>Confirm Final Pass</strong>. The button only activates when everything is clean.
+      </div>
+      <div class="modal-action-box">
+        <div class="step-line"><span class="step-n">1.</span><span>Confirm <strong>Amphetamine</strong> is running and set to Indefinitely</span></div>
+        <div class="step-line"><span class="step-n">2.</span><span>Confirm <strong>Insta360 settings</strong> — Lens Guards OFF, Stitching OFF</span></div>
+        <div class="step-line"><span class="step-n">3.</span><span>Confirm all files are on the <strong>Mac SSD</strong></span></div>
+        <div class="step-line"><span class="step-n">4.</span><span>Click <strong>Confirm Final Pass</strong> — you are now clear to compress and upload</span></div>
+      </div>
+      <div class="modal-nav">
+        <button class="btn-modal-skip" onclick="prevStep()">← Back</button>
+        <div class="modal-dots">
+          <div class="modal-dot done"></div>
+          <div class="modal-dot done"></div>
+          <div class="modal-dot done"></div>
+          <div class="modal-dot active"></div>
+        </div>
+        <button class="btn-modal-next" onclick="closeWalkthrough()" style="background:#3FC0C2;">✓ Got it — Let's go</button>
+      </div>
+    </div>
+
+  </div>
+</div>
 
 <!-- BACK NAV -->
 <div style="background:var(--surface); border-bottom:1px solid var(--border); padding:10px 28px; display:flex; align-items:center; gap:12px; position:sticky; top:0; z-index:999;">
@@ -1473,6 +1761,59 @@
     container.appendChild(t);
     setTimeout(() => t.remove(), 5000);
   }
+
+
+  // ═══ FIRST RUN WALKTHROUGH ═══
+  let currentModalStep = 0;
+  const TOTAL_MODAL_STEPS = 4;
+
+  function initWalkthrough() {
+    const seen = localStorage.getItem('ibi_auditor_walkthrough_done');
+    if (!seen) {
+      document.getElementById('firstRunModal').classList.remove('hidden');
+    }
+    // Inject help button into header
+    const helpBtn = document.createElement('button');
+    helpBtn.innerHTML = '? How to use this tool';
+    helpBtn.style.cssText = 'font-family:Urbanist,sans-serif;font-size:13px;font-weight:700;padding:7px 14px;border-radius:6px;border:2px solid #455C88;background:transparent;color:#BEC5D2;cursor:pointer;transition:all 0.15s;margin-right:8px;';
+    helpBtn.onmouseover = () => { helpBtn.style.borderColor='#9C91FC'; helpBtn.style.color='#fff'; };
+    helpBtn.onmouseout = () => { helpBtn.style.borderColor='#455C88'; helpBtn.style.color='#BEC5D2'; };
+    helpBtn.onclick = () => {
+      currentModalStep = 0;
+      document.querySelectorAll('.modal-step').forEach(s => s.classList.remove('active'));
+      document.getElementById('mStep0').classList.add('active');
+      document.getElementById('firstRunModal').classList.remove('hidden');
+    };
+    const dlBtn = document.querySelector('a[download]');
+    if (dlBtn) dlBtn.parentNode.insertBefore(helpBtn, dlBtn);
+  }
+
+  function nextStep() {
+    if (currentModalStep < TOTAL_MODAL_STEPS - 1) {
+      document.getElementById(`mStep${currentModalStep}`).classList.remove('active');
+      currentModalStep++;
+      document.getElementById(`mStep${currentModalStep}`).classList.add('active');
+    }
+  }
+
+  function prevStep() {
+    if (currentModalStep > 0) {
+      document.getElementById(`mStep${currentModalStep}`).classList.remove('active');
+      currentModalStep--;
+      document.getElementById(`mStep${currentModalStep}`).classList.add('active');
+    }
+  }
+
+  function skipWalkthrough() { closeWalkthrough(); }
+
+  function closeWalkthrough() {
+    document.getElementById('firstRunModal').classList.add('hidden');
+    localStorage.setItem('ibi_auditor_walkthrough_done', '1');
+  }
+
+  window.addEventListener('DOMContentLoaded', () => {
+    initWalkthrough();
+  });
 
   function delay(ms) { return new Promise(res => setTimeout(res, ms)); }
 </script>
